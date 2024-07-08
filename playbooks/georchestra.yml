@@ -8,13 +8,17 @@
     - { role: elastic.elasticsearch, tags: es }
     - { role: geerlingguy.kibana, tags: kibana }
   vars:
+
+    postgresql_lc_collate: 'en_US.UTF-8'
+    postgresql_lc_ctype: 'en_US.UTF-8'
+    
     georchestra_versions:
       # master version
-      datadir: master # or 24.0, see https://github.com/georchestra/datadir/branches
+      datadir: 24.0 # or, see https://github.com/georchestra/datadir/branches
       debian_repository_url: deb [signed-by=/etc/apt/keyrings/packages.georchestra.org.gpg] https://packages.georchestra.org/debian master main # or 24.0.x
-      georchestra_repository: master # see https://github.com/georchestra/georchestra/branches
+      georchestra_repository: 24.0.x # see https://github.com/georchestra/georchestra/branches
       geonetwork_datadir: gn4.2.7 # see https://github.com/georchestra/geonetwork_minimal_datadir/branches
-      geoserver_datadir: master # https://github.com/georchestra/geoserver_minimal_datadir/branches
+      geoserver_datadir: 2.25.0 # https://github.com/georchestra/geoserver_minimal_datadir/branches
       # 24.0.x
       # datadir: 24.0
       # debian_repository_url: deb [signed-by=/etc/apt/keyrings/packages.georchestra.org.gpg] https://packages.georchestra.org/debian 24.0.x main
