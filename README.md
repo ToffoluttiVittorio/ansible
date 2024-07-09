@@ -6,8 +6,12 @@ Right now, this will deploy a working geOrchestra from the **master** branch wit
 
 ## Prerequisite
 
+* Install ansible : 'sudo apt install ansible'
 * Debian Bookworm (12.x) VM
-* JAVA11 (could use [AdoptOpenJDK](https://adoptopenjdk.net/) project)
+* JAVA11 (could use [AdoptOpenJDK](https://adoptopenjdk.net/) project) (marche avec java 17 et pas 11)
+* sudo apt install openjdk-17-jdk
+
+
 * Token access to allow connection from VM to GitHub and allow to get MapStore2 artifact (see playbook.yml)
 
 ## setup
@@ -33,7 +37,7 @@ ansible-galaxy install -r requirements.yaml
 
 ... and run:
 ```
-ansible-playbook playbooks/georchestra.yml
+sudo ansible-playbook playbooks/georchestra.yml
 ```
 
 👉 If you run the playbook with a remote access (ssh) you maybe need to run the playbook with this command :

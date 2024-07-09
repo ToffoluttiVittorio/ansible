@@ -1,0 +1,11 @@
+--2024-07-09 09:07:44--  https://packages.georchestra.org/debian/landry%40georchestra.org.gpg.pubkey
+Resolving packages.georchestra.org (packages.georchestra.org)... 45.67.82.134
+Connecting to packages.georchestra.org (packages.georchestra.org)|45.67.82.134|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1674 (1.6K) [application/octet-stream]
+Saving to: ‘STDOUT’
+
+-                                      0%[                                                                     ]       0  --.-KB/s               -                                      0%[                                                                     ]       0  --.-KB/s    in 0s      
+
+
+Cannot write to ‘-’ (Success).

@@ -35,6 +35,8 @@
     name: "{{ georchestra.db.name }}"
     owner: "{{ georchestra.db.user }}"
     template: template0
+    lc_collate: en_US.utf8  # add this for it to work 
+    lc_ctype: en_US.utf8  # add this for it to work 
     encoding: UTF8
 
 - import_tasks: geonetwork.yml
