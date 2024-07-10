@@ -1,0 +1,32 @@
+Doc SIGOLE 
+
+Outil de configuration pour postgresql : PGTune
+
+Outil pour faire des carto simple : Khartis, open source de Sciences Po 
+
+Outil pour faire des animations en js : librairie Echarts, open source, enormément de possibilités mais technique 
+
+Outil de messagerie : existants : smtp-sink, courrier-imap avec webmail, smtp-exim mieux pour production ? 
+
+Prestation recommandé pour georchestra : CamptoCamp, Jdev, jeanpommier (worldbank, independant) 
+
+Pour voir utilisateurs LDAP : apache directory studio (host : localhost; port : à def; no encryption; "cn=admin,dc=georchestra,dc=orgs")
+
+Problématique du choix des thèmes dans geonetwork et autres filtres
+
+Problématique du choix de qui va être responsable de la plateforme, qui va vérifier
+
+Framacalc et autre options de frama pour outil open source et fr 
+
+Upgrade georchestra version 24
+
+API autre catalogue dans dossier de conf de Mapstore : .config local config.json ctrl f "csw" et ajouter le catalogue voulu
+
+Installation des paquets debians : 
+- installation du middleware : suivre doc georchestra, pour java : https://askubuntu.com/questions/1157417/install-adoptopenjdk-adoptium-onto-ubuntu
+- pour middleware, suivre le setup des différents middleware pour georchestra 
+- changer les mots de passse pour passage en prod 
+- certificat avec nom de domaine
+
+
+
