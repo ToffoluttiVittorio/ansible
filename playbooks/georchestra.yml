@@ -212,7 +212,7 @@
       cadastrapp:
         pkg: georchestra-cadastrapp
         tomcat: georchestra
-        enabled: true
+        enabled: false
       ROOT:
         pkg: georchestra-security-proxy
         tomcat: proxycas
@@ -238,12 +238,12 @@
       url: https://packages.georchestra.org/bot/datahub/datahub.zip
       default_api_url: /geonetwork/srv/api # could be set to any other GeoNetwork catalogue, even remote if CORS allows it
     mviewer:
-      enabled: true
+      enabled: false
       port: 8680
       gitrepo: https://github.com/mviewer/mviewer
       gitversion: master
     mviewerstudio:
-      enabled: true
+      enabled: false
       port: 8780
       gitrepo: https://github.com/mviewer/mviewerstudio
       gitversion: master
