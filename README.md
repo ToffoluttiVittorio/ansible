@@ -19,6 +19,8 @@ Right now, this will deploy a working geOrchestra from the **master** branch wit
 In order to deploy all the middleware and components of a geOrchestra instance, you just need to:
 
  * use `ansible-galaxy` to install external roles required for geonetwork 4:
+ * set the chmod
+ * sudo chmod -R u+w /home/vittorio/Documents/ansible/roles/
 ```
 ansible-galaxy install -r requirements.yaml
 ```
