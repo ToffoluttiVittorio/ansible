@@ -18,23 +18,26 @@ Right now, this will deploy a working geOrchestra from the **master** branch wit
 
 In order to deploy all the middleware and components of a geOrchestra instance, you just need to:
 
- * use `ansible-galaxy` to install external roles required for geonetwork 4:
- * set the chmod
- * sudo chmod -R 777 /home/vittorio/Documents/ansible/roles/
-```
-ansible-galaxy install -r requirements.yaml
-```
-
  * Clone source :
 
     `git clone https://github.com/georchestra/ansible.git`
 
+ * use `ansible-galaxy` to install external roles required for geonetwork 4 and set chmod : 
+
+```
+sudo chmod -R 777 /home/vittorio/Documents/ansible/roles/
+```
+ansible-galaxy install -r requirements.yaml
+```
+
+
  * setup variables for your own instance in ```playbooks/georchestra.yml```
 
  * Setup missings keys :
-- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
-- sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
+
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
 
 
  * Open `hosts` file
@@ -70,6 +73,25 @@ If you really want to use datadir, you have to set correct right to the `/mapsto
 
 If an `extensions.json` file is missing, just add it manually with empty `{}` json content.
 
+## Setup a web server mail for the georchestra's datafeeder
+
+    * install postfix :
+
+sudo apt install postfix
+
+    * Setup postfix :
+
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+myhostname = Ansible-42.myguest.virtualbox.org
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+mydestination = $myhostname, localhost, localhost.$mydomain, mail.$mydomain, www.$mydomain, localhost, $mydomain
+relayhost = 
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+mailbox_size_limit = 0
+recipient_delimiter = +
+inet_interfaces = all
+inet_protocols = all
 
 ## cleanup
 
