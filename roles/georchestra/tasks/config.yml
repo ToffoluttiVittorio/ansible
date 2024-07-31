@@ -41,7 +41,7 @@
   notify: restart all tomcats
   #when: georchestra.datadir.gitrepo == 'https://github.com/georchestra/datadir'
 
-  - name: template config files bis for geonetwork
+- name: template config files bis for geonetwork
   template:
     src: "{{ item.war }}/{{ item.file }}.j2"
     dest: "{{ georchestra.datadir.path }}/{{ item.war }}/{{ item.destdir }}/{{ item.file }}"
