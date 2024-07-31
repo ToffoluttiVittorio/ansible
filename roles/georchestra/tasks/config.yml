@@ -40,6 +40,27 @@
     - { file: logback.xml, war: cadastrapp, destdir: "" }
   notify: restart all tomcats
   #when: georchestra.datadir.gitrepo == 'https://github.com/georchestra/datadir'
+
+  - name: template config files bis for geonetwork
+  template:
+    src: "{{ item.war }}/{{ item.file }}.j2"
+    dest: "{{ georchestra.datadir.path }}/{{ item.war }}/{{ item.destdir }}/{{ item.file }}"
+    backup: true
+  #  debug: var=item
+  with_items:
+    - { file: targets-mapping.properties, war: security-proxy, destdir: "" }
+    - { file: security-proxy.properties, war: security-proxy, destdir: "" }
+    - { file: log4j.properties, war: security-proxy, destdir: log4j }
+    - { file: log4j2.xml, war: cas, destdir: config }
+    - { file: cas.properties, war: cas, destdir: config }
+    - { file: console.properties, war: console, destdir: "" }
+    - { file: log4j.properties, war: console, destdir: log4j }
+    - { file: log4j.properties, war: geowebcache, destdir: log4j }
+    - { file: log4j2.xml, war: geonetwork, destdir: log4j }
+    - { file: geonetwork.properties, war: geonetwork, destdir: "" }
+
+  notify: restart all tomcats
+  when: georchestra.datadir.gitrepo == 'https://github.com/georchestra/datadir'
   
 - name: Mviewer accessible only if connected
   lineinfile:
