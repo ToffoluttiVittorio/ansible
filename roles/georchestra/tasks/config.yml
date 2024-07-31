@@ -12,33 +12,33 @@
     path: "{{ georchestra.datadir.path }}/cadastrapp"
     state: directory
 
-- name: template config files
-  template:
-    src: "{{ item.war }}/{{ item.file }}.j2"
-    dest: "{{ georchestra.datadir.path }}/{{ item.war }}/{{ item.destdir }}/{{ item.file }}"
-    backup: true
-  #  debug: var=item
-  with_items:
-    - { file: default.properties, war: ., destdir: "" }
-    - { file: targets-mapping.properties, war: security-proxy, destdir: "" }
-    - { file: security-proxy.properties, war: security-proxy, destdir: "" }
-    - { file: log4j.properties, war: security-proxy, destdir: log4j }
-    - { file: log4j2.xml, war: cas, destdir: config }
-    - { file: cas.properties, war: cas, destdir: config }
-    - { file: console.properties, war: console, destdir: "" }
-    - { file: log4j.properties, war: console, destdir: log4j }
-    - { file: log4j.properties, war: geowebcache, destdir: log4j }
-    - { file: log4j2.xml, war: geonetwork, destdir: log4j }
-    - { file: geonetwork.properties, war: geonetwork, destdir: "" }
-    - { file: datafeeder.properties, war: datafeeder, destdir: "" }
-    - { file: frontend-config.json, war: datafeeder, destdir: "" }
-    #  - { file: geofence-geoserver.properties, war: geoserver, destdir: 'WEB-INF/classes' }
-    - { file: localConfig.json, war: mapstore, destdir: configs }
-    - { file: log4j2.properties, war: mapstore, destdir: "" }
-    - { file: log4j.properties, war: analytics, destdir: log4j }
-    - { file: cadastrapp.properties, war: cadastrapp, destdir: "" }
-    - { file: logback.xml, war: cadastrapp, destdir: "" }
-  notify: restart all tomcats
+# - name: template config files
+#   template:
+#     src: "{{ item.war }}/{{ item.file }}.j2"
+#     dest: "{{ georchestra.datadir.path }}/{{ item.war }}/{{ item.destdir }}/{{ item.file }}"
+#     backup: true
+#   #  debug: var=item
+#   with_items:
+#     - { file: default.properties, war: ., destdir: "" }
+#     - { file: targets-mapping.properties, war: security-proxy, destdir: "" }
+#     - { file: security-proxy.properties, war: security-proxy, destdir: "" }
+#     - { file: log4j.properties, war: security-proxy, destdir: log4j }
+#     - { file: log4j2.xml, war: cas, destdir: config }
+#     - { file: cas.properties, war: cas, destdir: config }
+#     - { file: console.properties, war: console, destdir: "" }
+#     - { file: log4j.properties, war: console, destdir: log4j }
+#     - { file: log4j.properties, war: geowebcache, destdir: log4j }
+#     - { file: log4j2.xml, war: geonetwork, destdir: log4j }
+#     - { file: geonetwork.properties, war: geonetwork, destdir: "" }
+#     - { file: datafeeder.properties, war: datafeeder, destdir: "" }
+#     - { file: frontend-config.json, war: datafeeder, destdir: "" }
+#     #  - { file: geofence-geoserver.properties, war: geoserver, destdir: 'WEB-INF/classes' }
+#     - { file: localConfig.json, war: mapstore, destdir: configs }
+#     - { file: log4j2.properties, war: mapstore, destdir: "" }
+#     - { file: log4j.properties, war: analytics, destdir: log4j }
+#     - { file: cadastrapp.properties, war: cadastrapp, destdir: "" }
+#     - { file: logback.xml, war: cadastrapp, destdir: "" }
+#   notify: restart all tomcats
 
 - name: Mviewer accessible only if connected
   lineinfile:
