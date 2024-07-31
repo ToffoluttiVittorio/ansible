@@ -19,7 +19,7 @@
       # geoserver_datadir: 2.25.0 # https://github.com/georchestra/geoserver_minimal_datadir/branches
       # 24.0.x
 
-      datadir: "24.0"
+      datadir: "master"
       debian_repository_url: "deb [signed-by=/etc/apt/keyrings/packages.georchestra.org.gpg] https://packages.georchestra.org/debian 24.0.x main"
       georchestra_repository: "24.0.x"
       geonetwork_datadir: "gn4.2.7"
@@ -94,7 +94,7 @@
         pass: georchestra
       datadir:
         path: /etc/georchestra
-        gitrepo: https://github.com/georchestra/datadir
+        gitrepo: https://github.com/ToffoluttiVittorio/datadir
         gitversion: "{{ georchestra_versions.datadir }}"
       debian:
         repo: "{{ georchestra_versions.debian_repository_url }}"
