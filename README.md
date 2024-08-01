@@ -34,11 +34,11 @@ ansible-galaxy install -r requirements.yaml
  * setup variables for your own instance in ```playbooks/georchestra.yml```
 
  * Setup missings keys :
-
+```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
-
+```
 
  * Open `hosts` file
 
