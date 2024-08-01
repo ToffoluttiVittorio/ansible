@@ -75,11 +75,11 @@ If an `extensions.json` file is missing, just add it manually with empty `{}` js
 
 ## Setup a web server mail for the georchestra's datafeeder
 
-    - install postfix :
+Install postfix :
 
-'sudo apt install postfix'
+```sudo apt install postfix```
 
-    - Setup postfix :
+Setup postfix :
 ```
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 myhostname = Ansible-42.myguest.virtualbox.org
