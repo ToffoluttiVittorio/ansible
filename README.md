@@ -75,12 +75,12 @@ If an `extensions.json` file is missing, just add it manually with empty `{}` js
 
 ## Setup a web server mail for the georchestra's datafeeder
 
-    * install postfix :
+    - install postfix :
 
-sudo apt install postfix
+'sudo apt install postfix'
 
-    * Setup postfix :
-
+    - Setup postfix :
+```
 smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
 myhostname = Ansible-42.myguest.virtualbox.org
 alias_maps = hash:/etc/aliases
@@ -92,7 +92,7 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
-
+```
 ## cleanup
 
 If you want to remove/cleanup the webapps, databases, LDAP DIT and datadirs, sub-tasks have been added and can be run using
