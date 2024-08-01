@@ -94,7 +94,7 @@
         pass: georchestra
       datadir:
         path: /etc/georchestra
-        gitrepo: https://github.com/ToffoluttiVittorio/datadir
+        gitrepo: https://github.com/georchestra/datadir
         gitversion: "{{ georchestra_versions.datadir }}"
       debian:
         repo: "{{ georchestra_versions.debian_repository_url }}"
