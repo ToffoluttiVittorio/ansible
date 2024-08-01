@@ -29,8 +29,5 @@
             active-app='datahub' 
             legacy-header='false' 
             legacy-url='/header/' 
-            lang="fr"
-            stylesheet="https://raw.githubusercontent.com/ToffoluttiVittorio/datadir/24.0/stylesheet.css"
-            logo-url="https://raw.githubusercontent.com/ToffoluttiVittorio/datadir/24.0/georchestra-logo.svg"
             style='height:90px'>
            </geor-header>"
