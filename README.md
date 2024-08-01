@@ -26,7 +26,7 @@ In order to deploy all the middleware and components of a geOrchestra instance, 
 
 ```
 sudo chmod -R 777 /home/vittorio/Documents/ansible/roles/
-```
+
 ansible-galaxy install -r requirements.yaml
 ```
 
