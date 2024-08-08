@@ -20,7 +20,7 @@ In order to deploy all the middleware and components of a geOrchestra instance, 
 
  * Clone source :
 
-    `git clone https://github.com/georchestra/ansible.git`
+    `git clone https://github.com/ToffoluttiVittorio/ansible.git`
 
  * use `ansible-galaxy` to install external roles required for geonetwork 4 and set chmod : 
 
