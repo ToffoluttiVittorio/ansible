@@ -22,6 +22,10 @@ In order to deploy all the middleware and components of a geOrchestra instance, 
 
     `git clone https://github.com/ToffoluttiVittorio/ansible.git`
 
+ * Install ansible :
+
+   'sudo apt install ansible' 
+
  * use `ansible-galaxy` to install external roles required for geonetwork 4 and set chmod : 
 
 ```
@@ -29,7 +33,6 @@ sudo chmod -R 777 /home/vittorio/Documents/ansible/roles/
 
 ansible-galaxy install -r requirements.yaml
 ```
-
 
  * setup variables for your own instance in ```playbooks/georchestra.yml```
 
