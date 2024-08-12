@@ -1,0 +1,15 @@
+/* Example of custom stylesheet */
+
+/* Couleurs personnalisées pour le header */
+header {
+  --georchestra-header-primary: #0a397f; /* Bleu foncé */
+  --georchestra-header-secondary: #225ea8; /* Bleu moyen */
+  --georchestra-header-primary-light: #34b3d1; /* Bleu clair */
+  --georchestra-header-secondary-light: #fdfbff; /* Couleur de fond actuelle */
+}
+
+/* Exemple de personnalisation pour les éléments actifs dans le menu */
+.admin-dropdown > li.active {
+  background-color: #34b3d1; /* Bleu clair pour les éléments actifs */
+  color: #ffffff; /* Texte en blanc pour les éléments actifs */
+}
