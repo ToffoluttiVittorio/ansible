@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Activer le mode de débogage pour afficher chaque commande avant son exécution
-set -x
-
 # Vérifie si le fichier de configuration est fourni en argument
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 config.txt"
@@ -10,74 +7,100 @@ if [ "$#" -ne 1 ]; then
 fi
 
 CONFIG_FILE="$1"
+SCRIPT_DIR=$(dirname "$0")  # Répertoire du script
 
-# Fonction pour remplacer du texte à une ligne spécifique
+# Fonction pour remplacer une expression spécifique à une ligne
+replace_expression() {
+    local file=$1
+    local line_number=$2
+    local old_expression=$3
+    local new_expression=$4
+    
+    echo "Remplacement de l'expression '$old_expression' par '$new_expression' dans la ligne $line_number du fichier $file"
+    sed -i "${line_number}s/${old_expression}/${new_expression}/" "$file"
+}
+
+# Fonction pour remplacer toute une ligne
 replace_line() {
     local file=$1
     local line_number=$2
-    local old_text=$3
-    local new_text=$4
-    echo "Remplacement de la ligne $line_number dans $file : $old_text par $new_text"
-    sed -i "${line_number}s|${old_text}|${new_text}|g" "$file"
+    local new_line=$3
+    
+    echo "Remplacement de la ligne $line_number dans le fichier $file par : $new_line"
+    sed -i "${line_number}s/.*/${new_line}/" "$file"
 }
 
-# Fonction pour ajouter des lignes
-add_lines() {
+# Fonction pour remplacer une expression partout dans un fichier
+replace_in_file() {
+    local file=$1
+    local old_expression=$2
+    local new_expression=$3
+    
+    echo "Remplacement de l'expression '$old_expression' par '$new_expression' dans tout le fichier $file"
+    sed -i "s/${old_expression}/${new_expression}/g" "$file"
+}
+
+# Fonction pour supprimer plusieurs lignes spécifiques
+delete_lines() {
+    local file=$1
+    local line_numbers=$2
+    
+    echo "Suppression des lignes suivantes ($line_numbers) dans le fichier $file"
+    # Utilisation de sed pour supprimer les lignes spécifiques
+    sed -i "$(echo $line_numbers | sed 's/,/d;/g')d" "$file"
+}
+
+# Fonction pour remplacer un fichier par un fichier dans le répertoire du script
+replace_file_from_script_dir() {
+    local source_file=$1
+    local destination_file=$2
+    local source_path="$SCRIPT_DIR/$source_file"
+    
+    if [ -f "$source_path" ]; then
+        echo "Remplacement du fichier $destination_file avec $source_path"
+        cp "$source_path" "$destination_file"
+    else
+        echo "Le fichier source $source_path n'existe pas."
+    fi
+}
+
+# Fonction pour ajouter plusieurs lignes avec texte complexe
+add_multiple_lines() {
     local file=$1
     local line_number=$2
     local new_lines=$3
-    echo "Ajout de lignes à partir de la ligne $line_number dans $file : $new_lines"
-    # Utiliser des guillemets doubles pour permettre l'expansion correcte
-    sed -i "${line_number}i$new_lines" "$file"
-}
-
-# Fonction pour supprimer des lignes
-delete_lines() {
-    local file=$1
-    local line_number=$2
-    echo "Suppression de la ligne $line_number dans $file"
-    sed -i "${line_number}d" "$file"
-}
-
-# Fonction pour ajouter un fichier
-add_file() {
-    local source_file=$1
-    local destination=$2
-    echo "Copie du fichier $source_file vers $destination"
-    cp "$source_file" "$destination"
-}
-
-# Fonction pour remplacer un fichier
-replace_file() {
-    local source_file=$1
-    local destination=$2
-    echo "Remplacement du fichier $destination par $source_file"
-    cp "$source_file" "$destination"
+    
+    echo "Ajout des lignes suivantes à partir de la ligne $line_number dans le fichier $file :"
+    echo "$new_lines"
+    
+    # Utilisation de sed pour ajouter les lignes
+    # Les lignes multi-lignes sont encadrées par des guillemets simples pour préserver le format
+    # On remplace les retours à la ligne par des séquences \n pour le traitement avec sed
+    sed -i "${line_number}i\\
+$(echo "$new_lines" | sed ':a;N;$!ba;s/\n/\\n/g')\\
+" "$file"
 }
 
 # Lecture du fichier de configuration
-while IFS= read -r line; do
-    # Éviter de lire des lignes vides
-    [ -z "$line" ] && continue
-
-    # Lire les paramètres à partir de chaque ligne
-    IFS=" " read -r action file line_number old_text new_text <<< "$line"
-
+while IFS=" " read -r action file line old_text new_text; do
     case "$action" in
+        replace_expression)
+            replace_expression "$file" "$line" "$old_text" "$new_text"
+            ;;
         replace_line)
-            replace_line "$file" "$line_number" "$old_text" "$new_text"
+            replace_line "$file" "$line" "$old_text"
             ;;
-        add_line)
-            add_lines "$file" "$line_number" "$old_text"
+        replace_in_file)
+            replace_in_file "$file" "$old_text" "$new_text"
             ;;
-        delete_line)
-            delete_lines "$file" "$line_number"
-            ;;
-        add_file)
-            add_file "$old_text" "$file"
+        delete_lines)
+            delete_lines "$file" "$line"
             ;;
         replace_file)
-            replace_file "$old_text" "$file"
+            replace_file_from_script_dir "$old_text" "$file"
+            ;;
+        add_lines)
+            add_multiple_lines "$file" "$line" "$old_text"
             ;;
         *)
             echo "Unknown action: $action"
