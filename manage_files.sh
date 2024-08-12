@@ -27,7 +27,8 @@ add_lines() {
     local line_number=$2
     local new_lines=$3
     echo "Ajout de lignes à partir de la ligne $line_number dans $file : $new_lines"
-    sed -i "${line_number}i${new_lines}" "$file"
+    # Utiliser des guillemets doubles pour permettre l'expansion correcte
+    sed -i "${line_number}i$new_lines" "$file"
 }
 
 # Fonction pour supprimer des lignes
@@ -55,16 +56,22 @@ replace_file() {
 }
 
 # Lecture du fichier de configuration
-while IFS=" " read -r action file line old_text new_text; do
+while IFS= read -r line; do
+    # Éviter de lire des lignes vides
+    [ -z "$line" ] && continue
+
+    # Lire les paramètres à partir de chaque ligne
+    IFS=" " read -r action file line_number old_text new_text <<< "$line"
+
     case "$action" in
         replace_line)
-            replace_line "$file" "$line" "$old_text" "$new_text"
+            replace_line "$file" "$line_number" "$old_text" "$new_text"
             ;;
         add_line)
-            add_lines "$file" "$line" "$old_text"
+            add_lines "$file" "$line_number" "$old_text"
             ;;
         delete_line)
-            delete_lines "$file" "$line"
+            delete_lines "$file" "$line_number"
             ;;
         add_file)
             add_file "$old_text" "$file"
