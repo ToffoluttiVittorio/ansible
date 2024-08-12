@@ -29,8 +29,16 @@ add_lines() {
     local new_lines=$3
     echo "Ajout dans le fichier : $file"
     echo "Ligne à partir de laquelle ajouter : $line_number"
-    echo "Nouvelles lignes : $new_lines"
-    sed -i "${line_number}i${new_lines}" "$file"
+    echo "Nouvelles lignes :"
+    echo "$new_lines"
+    
+    # Utilisation d'un délimiteur temporaire pour éviter les problèmes de formatage
+    temp_file=$(mktemp)
+    awk -v line="$line_number" -v new_lines="$new_lines" '
+    NR == line {print new_lines}
+    {print}
+    ' "$file" > "$temp_file"
+    mv "$temp_file" "$file"
     echo "Ajout terminé."
 }
 
@@ -77,6 +85,7 @@ while IFS=" " read -r action file line old_text new_text; do
             replace_line "$file" "$line" "$old_text" "$new_text"
             ;;
         add_line)
+            # On attend que les lignes à ajouter soient fournies en multi-lignes dans le fichier de config
             add_lines "$file" "$line" "$old_text"
             ;;
         delete_line)
