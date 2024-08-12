@@ -8,8 +8,6 @@ fi
 
 CONFIG_FILE="$1"
 
-echo "Fichier de configuration : $CONFIG_FILE"
-
 # Fonction pour remplacer du texte à une ligne spécifique
 replace_line() {
     local file=$1
