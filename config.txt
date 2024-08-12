@@ -1,0 +1,16 @@
+# Remplacement de texte spécifique à une ligne
+replace_line /etc/georchestra/default.properties 18 "fr" "en"
+replace_line /etc/georchestra/default.properties 43 "# georchestraStylesheet=http://my-domain-name/stylesheet.css" "georchestraStylesheet=./stylesheet.css"
+replace_line /etc/georchestra/default.properties 47 "logoUrl=https://www.georchestra.org/public/georchestra-logo.svg" "logoUrl=https://raw.githubusercontent/ToffoluttiVittorio/datadir/24.0/georchestra-logo.svg"
+
+# Ajout de lignes
+add_line /etc/georchestra/datafeeder/frontend-config.json 25 "{ \"label\": \"RGR92 / UTM zone 40S\", \"value\": \"EPSG:2975\" }"
+
+# Suppression de lignes
+delete_line /etc/georchestra/datafeeder/frontend-config.json 10
+
+# Ajouter un fichier
+add_file stylesheet.css /etc/georchestra/
+
+# Remplacement d'un fichier
+replace_file /path/to/header_bg.webp /etc/georchestra/datahub/assets/mg/header_bg.webp
