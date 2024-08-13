@@ -37,7 +37,7 @@ echo "Traduction des valeurs de orgTypeValues terminée."
 
 # Remplacement des valeurs dans le fichier XML
 echo "Remplacement de 'codeListValue=\"eng\"' par 'codeListValue=\"fre\"' dans le fichier XML..."
-sed -i 's/codeListValue="eng"/codeListValue="fre"/g' /etc/georchestra/datafeeder/metadata.xml
+sed -i 's/codeListValue="eng"/codeListValue="fre"/g' /etc/georchestra/datafeeder/metadata_template.xml
 echo "Remplacement dans le fichier XML terminé."
 
 # Suppression du fichier header_bg.web et copie du fichier header_bg.webp
