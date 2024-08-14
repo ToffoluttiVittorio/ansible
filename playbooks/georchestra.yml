@@ -85,7 +85,7 @@
       gitversion: "{{ georchestra_versions.georchestra_repository }}"
 
     georchestra:
-      fqdn: georchestra.example.org
+      fqdn: gorchestra.ole.re
       max_body_size: 100M
       ign_api_key: luvs4p9c4yq5ewfwqcqgm83f # invalid key only used in sviewer
       db:
