@@ -32,18 +32,46 @@ sed -i 's/#845490/#225ea8/g' "/srv/tomcat/proxycas/webapps/cas/WEB-INF/classes/s
 echo "Remplacement des couleurs terminé."
 
 # Remplacement des valeurs de langue dans le fichier JSP
-echo "Remplacement des valeurs de langue dans le fichier JSP..."
+#echo "Remplacement des valeurs de langue dans le fichier JSP..."
 
 # Remplacer lang = forcedLang par lang = "fr"
-sed -i 's/lang = forcedLang/lang = "fr"/g' "/srv/tomcat/georchestra/webapps/analytics/WEB-INF/jsp/index.jsp"
+#sed -i 's/lang = forcedLang/lang = "fr"/g' "/srv/tomcat/georchestra/webapps/analytics/WEB-INF/jsp/index.jsp"
 
 # Remplacer lang = detectedLanguage par lang = "fr"
-sed -i 's/lang = detectedLanguage/lang = "fr"/g' "/srv/tomcat/georchestra/webapps/analytics/WEB-INF/jsp/index.jsp"
+#sed -i 's/lang = detectedLanguage/lang = "fr"/g' "/srv/tomcat/georchestra/webapps/analytics/WEB-INF/jsp/index.jsp"
 
-echo "Remplacement des valeurs de langue terminé."
+#echo "Remplacement des valeurs de langue terminé."
 
 # Changement de couleurs dans le css de mapstore
 echo "Changement de couleurs dans le css de mapstore"
 sed -i 's/#85127e/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/themes/default.css
 
 echo "Changement de couleurs dans le css de mapstore terminé."
+
+
+# Changement du header de datahub
+echo "Changement du header de datahub"
+# Chemin vers votre fichier HTML
+file="/var/www/georchestra/htdocs/datahub/index.html"
+
+# Attributs à vérifier
+attr_check="lang='fr' stylesheet='./stylesheet.css' logo-url='./georchestra-logo.svg'"
+
+# Vérifier si la balise <geor-header> avec les attributs existe déjà
+if grep -q "<geor-header.*$attr_check.*>" "$file"; then
+  echo "Les attributs existent déjà dans la balise <geor-header>."
+else
+  echo "Les attributs n'existent pas. Ajout en cours..."
+
+  # Commande sed pour ajouter les attributs
+  sed -i "s/<geor-header active-app='datahub' legacy-header='false' legacy-url='\/header\/' style='height:90px'>/<geor-header active-app='datahub' legacy-header='false' legacy-url='\/header\/' lang='fr' stylesheet='.\/stylesheet.css' logo-url='.\/georchestra-logo.svg' style='height:90px'>/g" "$file"
+
+  echo "Les attributs ont été ajoutés."
+fi
+
+#Ajout du logo pour le header de datahub
+echo "Ajout du logo pour le header de datahub"
+
+cp ./georchestra-logo.svg /var/www/georchestra/htdocs/datahub/
+
+echo "Ajout du logo pour le header de mapstore terminé"
