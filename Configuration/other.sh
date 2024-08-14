@@ -6,8 +6,7 @@ sed -i '/"projections": \[/a \
     {\
       "label": "New Projection",\
       "value": "EPSG:2975"\
-    },\
-' /etc/georchestra/datafeeder/frontend-config.json
+    },' /etc/georchestra/datafeeder/frontend-config.json
 echo "Mise à jour du fichier JSON terminée."
 
 # Remplacement des valeurs dans le fichier XML
@@ -53,12 +52,10 @@ sed -i '/},/d' /etc/georchestra/mapstore/configs/localConfig.json
 # Ajouter la nouvelle projection à la section 'projectionDefs'
 echo "Ajout de la nouvelle projection à la section 'projectionDefs'..."
 sed -i '/"projectionDefs": \[/a \
-    {\
       "code": "EPSG:2975",\
       "def": "+proj=lcc +lat_1=48.5 +lat_2=49.5 +lat_0=48.0 +lon_0=-123.0 +x_0=1000000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",\
       "extent": [-600000, 1500000, 1200000, 5000000],\
       "worldExtent": [-130, 24, -66, 49]\
-    },\
-' /etc/georchestra/mapstore/configs/localConfig.json
+    },' /etc/georchestra/mapstore/configs/localConfig.json
 
 echo "Ajout de la projection terminé."
