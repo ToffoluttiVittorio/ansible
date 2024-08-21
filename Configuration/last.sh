@@ -7,7 +7,7 @@ echo "Copie du fichier stylesheet.css dans les répertoires de destination..."
 DESTINATIONS=(
   "/var/www/georchestra/htdocs/datahub/"
   "/srv/tomcat/georchestra/webapps/analytics/WEB-INF/jsp/"
-  "/srv/tomcat/proxycas/webapps/cas/WEB-INF/classes/static/themes/georchestra/"
+  "/srv/tomcat/proxycas/webapps/cas/WEB-INF/classes/static/"
   "/srv/tomcat/georchestra/webapps/console/account/"
 )
 
