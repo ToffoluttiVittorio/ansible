@@ -7,7 +7,7 @@ echo "Mise à jour du fichier de propriétés terminée."
 
 # Mise à jour du fichier de propriétés pour le changement d'URL du logo
 echo "Remplacement de l'URL du logo dans le fichier de propriétés..."
-sed -i 's|logoUrl=https://www.georchestra.org/public/georchestra-logo.svg|logoUrl=https://raw.githubusercontent.com/ToffoluttiVittorio/datadir/24.0/georchestra-logo.svg|' /etc/georchestra/default.properties
+sed -i 's|logoUrl=https://www.georchestra.org/public/georchestra-logo.svg|logoUrl=https://raw.githubusercontent.com/ToffoluttiVittorio/ansible/master/Configuration/georchestra-logo.svg|' /etc/georchestra/default.properties
 echo "Mise à jour de l'URL du logo terminée."
 
 # Remplacement de l'URL de la feuille de style commentée dans le fichier de propriétés
