@@ -97,3 +97,45 @@ sed -i 's/#73106d/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/theme
 sed -i 's/#73106d/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/themes/default.css
 echo "Changement des couleur terminés" 
 
+# Copie du favicon.png dans le repertoire de geonetwork
+echo "Copie du favicon.png dans le repertoire de geonetwork"
+cp ./favicon.png /srv/data/geonetwork/data/resources/images/logos/
+echo "Copie du favicon.png dans le repertoire de geonetwork terminé"
+
+# Vérification et ajout des redirections
+echo "Vérification des redirections"
+
+# Vérifiez si le pattern existe déjà dans le fichier
+if ! grep -q 'Redirect the stylesheet' /etc/nginx/sites-available/georchestra; then
+    # Ajouter les redirections juste avant la dernière occurrence du pattern spécifique
+    sed -i '/# redirect default to datahub/i \
+        # Redirect the stylesheet.css url of geoserver to something known\
+        location /geoserver/web/wicket/bookmarkable/stylesheet.css {\
+            alias /etc/georchestra/stylesheet.css;\
+        }\
+        # Same for another url\
+        location /geoserver/web/stylesheet.css {\
+            alias /etc/georchestra/stylesheet.css;\
+        }\
+        # Redirect the stylesheet.css url of geonetwork to something known\
+        location ~ ^/geonetwork/.*/.*/stylesheet\\.css$ {\
+            alias /etc/georchestra/stylesheet.css;\
+        }\
+        # Redirect the stylesheet.css of the console admin account url to something known\
+        location /console/account/stylesheet.css {\
+            alias /etc/georchestra/stylesheet.css;\
+        }\
+        # Redirect the stylesheet.css of the console admin manager url to something known\
+        location /console/manager/stylesheet.css {\
+            alias /etc/georchestra/stylesheet.css;\
+        }\
+        ' /etc/nginx/sites-available/georchestra
+
+    echo "Les redirections ont été ajoutées"
+else
+    echo "Les redirections ont déjà été ajoutées"
+fi
+echo "Mise à jour des redirections terminée."
+
+
+
