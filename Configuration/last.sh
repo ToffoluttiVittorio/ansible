@@ -138,7 +138,7 @@ fi
 echo "Mise à jour des redirections terminée."
 
 # Ajout d'une ligne dans le fichier /etc/hosts
-echo "Ajout de '127.0.0.1 georchestra.ole.re' au fichier /etc/hosts..."
+echo "Ajout de '127.0.0.1 fqdn' au fichier /etc/hosts..."
 echo '127.0.0.1 georchestra.ole.re' | sudo tee -a /etc/hosts > /dev/null
 echo "Ajout au fichier /etc/hosts terminé."
 
