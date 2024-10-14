@@ -30,7 +30,6 @@ echo "Remplacement des valeurs de orgTypeValues par leur traduction en français
 sed -i 's/orgTypeValues=Association,Company,NGO,Individual,Other/orgTypeValues=Association,Entreprise,ONG,Individu,Autre/' /etc/georchestra/console/console.properties
 echo "Traduction des valeurs de orgTypeValues terminée."
 
-
 # Ajout de l'option print dans Mapstore
 CONFIG_FILE="/srv/tomcat/proxycas/bin/setenv.sh"
 # Vérifier si la ligne JAVA_OPTS="$JAVA_OPTS -DPRINT_BASE_URL=pdf" existe déjà
