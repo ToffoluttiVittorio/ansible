@@ -138,6 +138,10 @@ else
 fi
 echo "Mise à jour des redirections terminée."
 
+# Suppression de la ligne contenant 127.0.0.1 dans /etc/hosts
+echo "Suppression de la ligne contenant '127.0.0.1' dans le fichier /etc/hosts..."
+sudo sed -i '/^127\.0\.0\.1/d' /etc/hosts
+echo "Suppression terminée."
 # Ajout d'une ligne dans le fichier /etc/hosts
 echo "Ajout de '127.0.0.1 fqdn' au fichier /etc/hosts..."
 echo '127.0.0.1 georchestra.ole.re' | sudo tee -a /etc/hosts > /dev/null
