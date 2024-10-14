@@ -9,6 +9,7 @@ DESTINATIONS=(
   "/srv/tomcat/georchestra/webapps/analytics/"
   "/srv/tomcat/proxycas/webapps/cas/WEB-INF/classes/static/"
   "/srv/tomcat/georchestra/webapps/console/account/"
+  "/srv/tomcat/georchestra/webapps/mapstore/"
 )
 
 # Boucle pour copier le fichier dans chaque répertoire
