@@ -9,6 +9,7 @@ DESTINATIONS=(
   "/srv/tomcat/georchestra/webapps/analytics/"
   "/srv/tomcat/proxycas/webapps/cas/WEB-INF/classes/static/"
   "/srv/tomcat/georchestra/webapps/console/account/"
+  "/srv/tomcat/georchestra/webapps/mapstore/"
 )
 
 # Boucle pour copier le fichier dans chaque répertoire
@@ -139,6 +140,6 @@ echo "Mise à jour des redirections terminée."
 
 # Ajout d'une ligne dans le fichier /etc/hosts
 echo "Ajout de '127.0.0.1 fqdn' au fichier /etc/hosts..."
-echo '127.0.0.1 georchestra.ole.re' | sudo tee -a /etc/hosts > /dev/null
+echo '127.0.0.1 dev-carto.ole.re' | sudo tee -a /etc/hosts > /dev/null
 echo "Ajout au fichier /etc/hosts terminé."
 
