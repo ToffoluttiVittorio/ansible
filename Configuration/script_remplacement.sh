@@ -46,9 +46,9 @@ echo "Modification du zoom et du centre dans le fichier /etc/georchestra/mapstor
 # Remplacer le zoom par 9
 sed -i 's/"zoom": [0-9]\+\,/"zoom": 10\,/g' "/etc/georchestra/mapstore/configs/config.json"
 # Remplacer les coordonnées X du centre par 651719.38
-sed -i 's/"x": [0-9\.]\+\,/"x": 651719.38\,/g' "/etc/georchestra/mapstore/configs/config.json"
+sed -i 's/"x": [0-9\.]\+\,/"x":  6180211.94\,/g' "/etc/georchestra/mapstore/configs/config.json"
 # Remplacer les coordonnées Y du centre par -2223657.28
-sed -i 's/"y": [-0-9\.]\+\,/"y": -2223657.28\,/g' "/etc/georchestra/mapstore/configs/config.json"
+sed -i 's/"y": [-0-9\.]\+\,/"y": -2416823.12\,/g' "/etc/georchestra/mapstore/configs/config.json"
 echo "Le zoom et le centre de la carte ont été mis à jour."
 
 # Suppression du fichier print_header.png et copie du fichier print_header.png du fichier de config
