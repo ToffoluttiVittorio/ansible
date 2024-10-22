@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Vérifier si la nouvelle projection existe déjà dans le fichier JSON et ajouter si elle n'existe pas
+# Ajout d'une nouvelle projection 2975
 echo "Vérification et ajout de la nouvelle entrée à la liste 'projections' dans le fichier JSON..."
 if ! grep -q '"value": "EPSG:2975"' /etc/georchestra/datafeeder/frontend-config.json; then
     sed -i '/"projections": \[/a \
@@ -12,7 +12,48 @@ if ! grep -q '"value": "EPSG:2975"' /etc/georchestra/datafeeder/frontend-config.
 else
     echo "La projection 'EPSG:2975' existe déjà dans la liste 'projections'."
 fi
+echo "Mise à jour du fichier JSON terminée."
 
+# Ajout d'une nouvelle projection 3727
+echo "Vérification et ajout de la nouvelle entrée à la liste 'projections' dans le fichier JSON..."
+if ! grep -q '"value": "EPSG:3727"' /etc/georchestra/datafeeder/frontend-config.json; then
+    sed -i '/"projections": \[/a \
+    {\
+      "label": "EPSG:3727",\
+      "value": "EPSG:3727"\
+    },' /etc/georchestra/datafeeder/frontend-config.json
+    echo "Nouvelle entrée ajoutée à la liste 'projections'."
+else
+    echo "La projection 'EPSG:3727' existe déjà dans la liste 'projections'."
+fi
+echo "Mise à jour du fichier JSON terminée."
+
+# Ajout d'une nouvelle projection 32740
+echo "Vérification et ajout de la nouvelle entrée à la liste 'projections' dans le fichier JSON..."
+if ! grep -q '"value": "EPSG:32740"' /etc/georchestra/datafeeder/frontend-config.json; then
+    sed -i '/"projections": \[/a \
+    {\
+      "label": "EPSG:32740",\
+      "value": "EPSG:32740"\
+    },' /etc/georchestra/datafeeder/frontend-config.json
+    echo "Nouvelle entrée ajoutée à la liste 'projections'."
+else
+    echo "La projection 'EPSG:32740' existe déjà dans la liste 'projections'."
+fi
+echo "Mise à jour du fichier JSON terminée."
+
+# Ajout d'un nouveau encodage
+echo "Vérification et ajout de la nouvelle entrée à la liste 'encodings' dans le fichier JSON..."
+if ! grep -q '"value": "Windows-1252"' /etc/georchestra/datafeeder/frontend-config.json; then
+    sed -i '/"encodings": \[/a \
+    {\
+      "label": "Windows-1252",\
+      "value": "Windows-1252"\
+    },' /etc/georchestra/datafeeder/frontend-config.json
+    echo "Nouvelle entrée ajoutée à la liste 'encodings'."
+else
+    echo "L'encodage 'Windows-1252' existe déjà dans la liste 'encodings'."
+fi
 echo "Mise à jour du fichier JSON terminée."
 
 # Remplacement des valeurs dans le fichier XML
