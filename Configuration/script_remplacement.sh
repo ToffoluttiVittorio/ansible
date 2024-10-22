@@ -44,17 +44,17 @@ fi
 # Modification du zoom et du centre dans le fichier de configuration
 echo "Modification du zoom et du centre dans le fichier /etc/georchestra/mapstore/configs/config.json..."
 # Remplacer le zoom par 9
-sed -i 's/"zoom": [0-9]\+\,/"zoom": 9\,/g' "/etc/georchestra/mapstore/configs/config.json"
+sed -i 's/"zoom": [0-9]\+\,/"zoom": 10\,/g' "/etc/georchestra/mapstore/configs/config.json"
 # Remplacer les coordonnées X du centre par 651719.38
 sed -i 's/"x": [0-9\.]\+\,/"x": 651719.38\,/g' "/etc/georchestra/mapstore/configs/config.json"
 # Remplacer les coordonnées Y du centre par -2223657.28
 sed -i 's/"y": [-0-9\.]\+\,/"y": -2223657.28\,/g' "/etc/georchestra/mapstore/configs/config.json"
 echo "Le zoom et le centre de la carte ont été mis à jour."
 
-# Suppression du fichier print_header.png et copie du fichier print_header.jpg
+# Suppression du fichier print_header.png et copie du fichier print_header.png du fichier de config
 echo "Suppression du fichier print_header.png et copie du fichier print_header.jpg..."
 rm -f /etc/georchestra/mapstore/printing/print_header.png
-cp print_header.jpg /etc/georchestra/mapstore/printing/
+cp print_header.png /etc/georchestra/mapstore/printing/
 echo "Fichier print_header.png supprimé et print_header.jpg copié."
 
 # Suppression du fichier stylesheet.css et copie du fichier stylesheet.css
