@@ -147,7 +147,7 @@
     # if running behind a reverse proxy, uncomment/fill so that you get the real client ip in accesslogs
     #reverse_proxy_real_ip: 10.0.0.1
     #reverse_proxy_real_ip_header: X-Forwarded-For
-    console_adminemail: admin@example.org
+    console_adminemail: root@dev-carto.ole.re
     console_captcha:
       privateKey: ""
       publicKey: ""
