@@ -36,13 +36,6 @@ ansible-galaxy install -r requirements.yaml
 
  * setup variables for your own instance in ```playbooks/georchestra.yml```
 
- * Setup missings keys :
-```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 0E98404D386FA1D9
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6ED0E7B82643E131
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 605C66F00D6C9793
-```
-
  * Open `hosts` file
 
  * Replace `IP_OF_YOUR_MACHINE` by the IP of a host where you have `ssh-with-passphrase` root access (ideally, an lxc container, a vm, or whatever suits you) to get something like :
@@ -83,19 +76,9 @@ Install postfix :
 ```sudo apt install postfix```
 
 Setup postfix :
-```
-smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
-myhostname = Ansible-42.myguest.virtualbox.org
-alias_maps = hash:/etc/aliases
-alias_database = hash:/etc/aliases
-mydestination = $myhostname, localhost, localhost.$mydomain, mail.$mydomain, www.$mydomain, localhost, $mydomain
-relayhost = 
-mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
-mailbox_size_limit = 0
-recipient_delimiter = +
-inet_interfaces = all
-inet_protocols = all
-```
+
+Voir la documentation
+
 ## cleanup
 
 If you want to remove/cleanup the webapps, databases, LDAP DIT and datadirs, sub-tasks have been added and can be run using
