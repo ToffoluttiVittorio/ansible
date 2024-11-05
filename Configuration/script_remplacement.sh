@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Mise à jour du fichier de propriétés pour le changement de langue
+# Mise à jour du fichier de configuration général pour changer la langue par défaut 
 echo "Remplacement de 'language=en' par 'language=fr' dans le fichier de propriétés..."
 sed -i 's/language=en/language=fr/' /etc/georchestra/default.properties
 echo "Mise à jour du fichier de propriétés terminée."
 
-# Mise à jour du fichier de propriétés pour le changement d'URL du logo
+# Mise à jour du fichier de configuration général pour le changement d'URL du logo
 echo "Remplacement de l'URL du logo dans le fichier de propriétés..."
 sed -i 's|logoUrl=https://www.georchestra.org/public/georchestra-logo.svg|logoUrl=https://raw.githubusercontent.com/ToffoluttiVittorio/ansible/master/Configuration/georchestra-logo.svg|' /etc/georchestra/default.properties
 echo "Mise à jour de l'URL du logo terminée."
@@ -15,7 +15,7 @@ echo "Remplacement de l'URL de la feuille de style commentée dans le fichier de
 sed -i 's|# georchestraStylesheet=http://my-domain-name/stylesheet.css|georchestraStylesheet=./stylesheet.css|' /etc/georchestra/default.properties
 echo "Mise à jour de l'URL de la feuille de style terminée."
 
-# Activation des analytics dans le fichier de propriétés
+# Activation du module analytics dans le fichier de propriétés
 echo "Activation des analytics dans le fichier de propriétés..."
 sed -i 's/analyticsEnabled=false/analyticsEnabled=true/' /etc/georchestra/default.properties
 echo "Activation des analytics terminée."
@@ -41,7 +41,7 @@ else
     echo "Ligne ajoutée avec succès."
 fi
 
-# Modification du zoom et du centre dans le fichier de configuration
+# Modification du zoom et du centre par défaut dans mapstore dans le fichier de configuration
 echo "Modification du zoom et du centre dans le fichier /etc/georchestra/mapstore/configs/config.json..."
 # Remplacer le zoom par 9
 sed -i 's/"zoom": [0-9]\+\,/"zoom": 10\,/g' "/etc/georchestra/mapstore/configs/config.json"
@@ -57,7 +57,7 @@ rm -f /etc/georchestra/mapstore/printing/print_header.png
 cp print_header.png /etc/georchestra/mapstore/printing/
 echo "Fichier print_header.png supprimé et print_header.jpg copié."
 
-# Suppression du fichier stylesheet.css et copie du fichier stylesheet.css
+# Suppression du fichier stylesheet.css et copie du nouveau fichier stylesheet.css
 echo "Suppression du fichier stylesheet.css et copie du fichier stylesheet.css..."
 rm -f /etc/georchestra/stylesheet.css
 cp stylesheet.css /etc/georchestra/

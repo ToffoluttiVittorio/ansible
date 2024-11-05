@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copier le fichier stylesheet.css dans les répertoires de destination
+# Copier le fichier stylesheet.css dans les répertoires de destination pour bien changer les couleurs du header pour tous les modules 
 echo "Copie du fichier stylesheet.css dans les répertoires de destination..."
 
 # Répertoires de destination
@@ -96,14 +96,14 @@ sed -i 's/#4f0b46/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/theme
 sed -i 's/#680c63/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/themes/default.css
 sed -i 's/#73106d/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/themes/default.css
 sed -i 's/#73106d/#0a397f/g' /srv/tomcat/georchestra/webapps/mapstore/dist/themes/default.css
-echo "Changement des couleur terminés" 
+echo "Changement des couleur terminés"
 
 # Copie du favicon.png dans le repertoire de geonetwork
 echo "Copie du favicon.png dans le repertoire de geonetwork"
 cp ./favicon.png /srv/data/geonetwork/data/resources/images/logos/
 echo "Copie du favicon.png dans le repertoire de geonetwork terminé"
 
-# Vérification et ajout des redirections
+# Vérification et ajout des redirections pour bien lire les fichiers css et donc avoir les bonnes couleurs du header partout
 echo "Vérification des redirections"
 
 # Vérifiez si le pattern existe déjà dans le fichier
@@ -142,7 +142,8 @@ echo "Mise à jour des redirections terminée."
 echo "Suppression de la ligne contenant '127.0.0.1' dans le fichier /etc/hosts..."
 sudo sed -i '/^127\.0\.0\.1/d' /etc/hosts
 echo "Suppression terminée."
-# Ajout d'une ligne dans le fichier /etc/hosts
+
+# Ajout d'une ligne dans le fichier /etc/hosts pour définir le host
 echo "Ajout de '127.0.0.1 fqdn' au fichier /etc/hosts..."
 echo '127.0.0.1 dev-carto.ole.re' | sudo tee -a /etc/hosts > /dev/null
 echo "Ajout au fichier /etc/hosts terminé."
